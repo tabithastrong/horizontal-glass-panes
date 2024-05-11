@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "horizontal_glass_panes:pane_light_gray",
+    "id": "horizontal_glass_panes:pane_light_gray",
     "count": 3
   }
 }

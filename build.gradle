@@ -4,6 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
 }
 
+
 architectury {
     minecraft = project.minecraft_version
 }
@@ -50,18 +51,18 @@ subprojects {
         // If you remove this line, sources will not be generated.
         withSourcesJar()
 
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     tasks.withType(JavaCompile).configureEach {
-        it.options.release = 17
+        it.options.release = 21
     }
 
     processResources {
         inputs.property "version", project.version
 
-        filesMatching(["fabric.mod.json", "META-INF/mods.toml"]) {
+        filesMatching(["fabric.mod.json", "META-INF/neoforge.mods.toml"]) {
             expand "version": project.version,
                     "mod_id": rootProject.mod_id,
                     "mod_name": rootProject.mod_name,
@@ -70,13 +71,11 @@ subprojects {
                     "mod_website": rootProject.mod_website,
                     "mod_sources": rootProject.mod_sources,
                     "minecraft_version": rootProject.minecraft_version,
-                    "mod_forge_loader_range": rootProject.mod_forge_loader_range,
                     "mod_neo_loader_range": rootProject.mod_neo_loader_range,
                     "logo_file": rootProject.logo_file,
                     "architectury_api_version": rootProject.architectury_api_version,
                     "fabric_loader_version": rootProject.fabric_loader_version,
                     "fabric_api_version": rootProject.fabric_api_version,
-                    "forge_version": rootProject.forge_version,
                     "neoforge_version": rootProject.neoforge_version,
                     "parchment_version": rootProject.parchment_version
         }
