@@ -26,13 +26,13 @@ public class HorizontalGlassPanes {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(MOD_ID, Registries.BLOCK);
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(MOD_ID, Registries.CREATIVE_MODE_TAB);
 
-	public static RegistrySupplier<Block> PANE_GLASS = BLOCKS.register("pane_glass", () -> new HorizontalPaneBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE)));
-	public static RegistrySupplier<Block> PANE_IRON = BLOCKS.register("pane_iron", () -> new HorizontalPaneBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS)));
+	public static RegistrySupplier<Block> PANE_GLASS = BLOCKS.register("pane_glass", () -> new HorizontalPaneBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)));
+	public static RegistrySupplier<Block> PANE_IRON = BLOCKS.register("pane_iron", () -> new HorizontalPaneBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
 
 	public static RegistrySupplier<Block>[] COLORED_PANES = new RegistrySupplier[16];
 
 	public static RegistrySupplier<CreativeModeTab> HORIZONTAL_TAB = TABS.register("generic", () ->
-			CreativeTabRegistry.create(Component.translatable("itemGroup.horizontal_glass_panes.generic"), () -> new ItemStack(PANE_GLASS.get(), 1)));
+			CreativeTabRegistry.create(Component.translatable("itemGroup.horizontal_glass_panes.generic"), () -> new ItemStack(COLORED_PANES[1].get(), 1)));
 
 
 	public static final Map<Integer, Block> HORIZONTAL_ID_TO_BLOCK = new HashMap<Integer, Block>();
@@ -62,7 +62,7 @@ public class HorizontalGlassPanes {
 			String name = "pane_" + DyeColor.values()[i].name().toLowerCase();
 			final int id = i;
 
-			COLORED_PANES[i] = BLOCKS.register(name, () -> new HorizontalPaneBlock(BlockBehaviour.Properties.ofFullCopy(HORIZONTAL_ID_TO_BLOCK.get(id))));
+			COLORED_PANES[i] = BLOCKS.register(name, () -> new HorizontalPaneBlock(BlockBehaviour.Properties.copy(HORIZONTAL_ID_TO_BLOCK.get(id))));
 			ITEMS.register(name, () -> new BlockItem(COLORED_PANES[id].get(), new Item.Properties().arch$tab(HORIZONTAL_TAB)));
 		}
 	}

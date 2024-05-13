@@ -2,6 +2,7 @@ package com.witchica.panes.forge;
 
 import com.witchica.panes.common.HorizontalGlassPanes;
 import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 

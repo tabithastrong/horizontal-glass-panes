@@ -2,12 +2,6 @@ plugins {
     id 'com.github.johnrengelman.shadow'
 }
 
-loom {
-    forge {
-        mixinConfig "horizontal_glass_panes.mixins.json"
-    }
-}
-
 architectury {
     platformSetupLoomIde()
     forge()
