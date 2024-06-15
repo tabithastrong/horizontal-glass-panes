@@ -74,6 +74,6 @@ public class HorizontalGlassPanes {
 	}
 
 	public static ResourceLocation makeResourceLocation(String name) {
-		return new ResourceLocation(MOD_ID, name);
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
 	}
 }
