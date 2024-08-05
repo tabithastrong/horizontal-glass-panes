@@ -31,9 +31,15 @@ jobs:
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
+      - name: Copy together artifacts
+        shell: bash
+        run: |
+          mkdir dist
+          cp fabric/build/libs/*.jar dist
+          cp neoforge/build/libs/*.jar dist
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '21' }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
-          path: build/libs/
+          path: dist/*
